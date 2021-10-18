@@ -9,4 +9,6 @@ public interface EmployeeService {
 
   Employee getEmployeeById(Long id);
 
+  void switchAtWork(Employee employee);
+
 }

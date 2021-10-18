@@ -31,6 +31,7 @@ public class Employee {
   private String position;
   @Temporal(value = TemporalType.DATE)
   private Date dateOfStart;
+  private boolean atWork;
 
   @OneToOne(mappedBy = "employee")
   private Contact contact;
@@ -38,4 +39,10 @@ public class Employee {
   @OneToMany(mappedBy = "employee")
   private List<WorkedHours> workedHoursList;
 
+
+  public Employee(String name, String position) {
+    this.name = name;
+    this.position = position;
+    this.atWork = false;
+  }
 }

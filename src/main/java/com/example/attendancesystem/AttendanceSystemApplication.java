@@ -1,5 +1,6 @@
 package com.example.attendancesystem;
 
+import com.example.attendancesystem.repositories.EmployeeRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
