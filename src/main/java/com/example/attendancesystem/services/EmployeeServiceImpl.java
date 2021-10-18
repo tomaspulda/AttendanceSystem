@@ -33,9 +33,4 @@ public class EmployeeServiceImpl implements EmployeeService {
     employee.setAtWork(!employee.isAtWork());
     employeeRepository.save(employee);
   }
-
-  @PostConstruct
-  public void createEmployee() {
-    employeeRepository.save(new Employee("Tomáš", "Dělník"));
-  }
 }

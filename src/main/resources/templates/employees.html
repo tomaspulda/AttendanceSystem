@@ -5,7 +5,6 @@
   <title>All Employees</title>
 </head>
 <body>
-
 <table>
   <thead>
   <tr>
@@ -13,21 +12,20 @@
     <th>Position</th>
     <th>Shift Start</th>
     <th>Shift End</th>
+    <th>Employees Details</th>
   </tr>
   </thead>
   <tbody>
   <tr th:each="employee : ${employees}">
     <td th:text="${employee.name}"></td>
     <td th:text="${employee.position}"></td>
-
-    <td th:if="${employee.atWork}">At work</td>
+    <td th:if="${employee.atWork}">Employee is working!</td>
     <td th:unless="${employee.atWork}"><a th:href="@{|/employee/start/${employee.id}/|}">Shift Start</a></td>
-
     <td th:if="${employee.atWork}"><a th:href="@{|/employee/end/${employee.id}/|}">Shift End</a></td>
-    <td th:unless="${employee.atWork}">Employee at work</td>
+    <td th:unless="${employee.atWork}">Shift did not start yet!</td>
+    <td><a th:href="@{|/employee/detail/${employee.id}|}">Employee Details</a></td>
   </tr>
   </tbody>
 </table>
-
 </body>
 </html>

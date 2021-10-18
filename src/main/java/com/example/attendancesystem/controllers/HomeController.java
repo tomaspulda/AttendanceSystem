@@ -1,5 +1,6 @@
 package com.example.attendancesystem.controllers;
 
+import com.example.attendancesystem.services.ContactService;
 import com.example.attendancesystem.services.EmployeeService;
 import com.example.attendancesystem.services.WorkedHoursService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,12 +14,15 @@ public class HomeController {
 
   private EmployeeService employeeService;
   private WorkedHoursService workedHoursService;
+  private ContactService contactService;
 
   @Autowired
   public HomeController(EmployeeService employeeService,
-      WorkedHoursService workedHoursService) {
+      WorkedHoursService workedHoursService,
+      ContactService contactService) {
     this.employeeService = employeeService;
     this.workedHoursService = workedHoursService;
+    this.contactService = contactService;
   }
 
   @GetMapping("/")
@@ -37,5 +41,13 @@ public class HomeController {
   public String setShiftEnd(@PathVariable Long employee_id) {
     workedHoursService.setEnd(employeeService.getEmployeeById(employee_id));
     return "redirect:/";
+  }
+
+  @GetMapping("/employee/detail/{employee_id}")
+  public String getEmployeeDetail(@PathVariable Long employee_id, Model model) {
+    model.addAttribute("employee", employeeService.getEmployeeById(employee_id));
+    model.addAttribute("contact", contactService.getEmployeesContact(
+        employeeService.getEmployeeById(employee_id)));
+    return "detail";
   }
 }

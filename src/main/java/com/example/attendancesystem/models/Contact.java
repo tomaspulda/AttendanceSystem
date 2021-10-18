@@ -25,6 +25,7 @@ public class Contact {
   private int houseNumber;
   private String city;
   private int postCode;
+  private String country;
   private Long phoneNumber;
 
   @OneToOne

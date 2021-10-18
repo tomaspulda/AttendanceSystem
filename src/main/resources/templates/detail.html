@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Employees Details</title>
+</head>
+<body>
+<table>
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Position</th>
+    <th>Date of Birth</th>
+    <th>Date of Start</th>
+    <th>Phone Number</th>
+    <th>Street</th>
+    <th>City</th>
+    <th>Country</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <th th:text="${employee.id}"></th>
+    <th th:text="${employee.name}"></th>
+    <th th:text="${employee.position}"></th>
+    <th th:text="${employee.dayOfBirth}"></th>
+    <th th:text="${employee.dateOfStart}"></th>
+    <th th:text="${contact.phoneNumber}"></th>
+    <th th:text="${contact.street}"></th>
+    <th th:text="${contact.city}"></th>
+    <th th:text="${contact.country}"></th>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
