@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>All Employees</title>
+</head>
+<body>
+
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Position</th>
+    <th>Shift Start</th>
+    <th>Shift End</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="employee : ${employees}">
+    <td th:text="${employee.name}"></td>
+    <td th:text="${employee.position}"></td>
+    <td><a th:href="@{|/employee/start/${employee.id}/|}">Shift Start</a></td>
+    <td><a th:href="@{|/employee/end/${employee.id}/|}">Shift End</a></td>
+  </tr>
+  </tbody>
+</table>
+
+</body>
+</html>
