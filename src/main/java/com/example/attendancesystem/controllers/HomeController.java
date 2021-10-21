@@ -32,19 +32,19 @@ public class HomeController {
   }
 
   @GetMapping("/employee/start/{employee_id}")
-  public String setShiftStart(@PathVariable Long employee_id) {
+  public String setShiftStart(@PathVariable Long employee_id) throws Exception {
     workedHoursService.setStart(employeeService.getEmployeeById(employee_id));
     return "redirect:/";
   }
 
   @GetMapping("/employee/end/{employee_id}")
-  public String setShiftEnd(@PathVariable Long employee_id) {
+  public String setShiftEnd(@PathVariable Long employee_id) throws Exception {
     workedHoursService.setEnd(employeeService.getEmployeeById(employee_id));
     return "redirect:/";
   }
 
   @GetMapping("/employee/detail/{employee_id}")
-  public String getEmployeeDetail(@PathVariable Long employee_id, Model model) {
+  public String getEmployeeDetail(@PathVariable Long employee_id, Model model) throws Exception {
     model.addAttribute("employee", employeeService.getEmployeeById(employee_id));
     model.addAttribute("contact", contactService.getEmployeesContact(
         employeeService.getEmployeeById(employee_id)));

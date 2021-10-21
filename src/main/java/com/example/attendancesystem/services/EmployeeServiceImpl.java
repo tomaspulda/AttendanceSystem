@@ -3,7 +3,7 @@ package com.example.attendancesystem.services;
 import com.example.attendancesystem.models.Employee;
 import com.example.attendancesystem.repositories.EmployeeRepository;
 import java.util.List;
-import javax.annotation.PostConstruct;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,8 +24,12 @@ public class EmployeeServiceImpl implements EmployeeService {
   }
 
   @Override
-  public Employee getEmployeeById(Long id) {
-    return employeeRepository.getById(id);
+  public Employee getEmployeeById(Long id) throws Exception {
+    Optional<Employee> optionalEmployee = employeeRepository.findById(id);
+    if (optionalEmployee.isEmpty()) {
+      throw new Exception("There is no Employee");
+    }
+    return optionalEmployee.get();
   }
 
   @Override
