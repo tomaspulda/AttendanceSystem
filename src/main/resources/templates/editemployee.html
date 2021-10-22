@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Employee</title>
+</head>
+<body>
+<form th:action="@{/employee/edit/{id}(id=${employee.id})}" method="post">
+  <label for="name">Name:</label>
+  <input type="text" name="name" id="name" th:value="${employee.name}">
+
+  <label for="position">Position:</label>
+  <select name="position" id="position">
+    <option th:value="${employee.position}" th:text="${employee.position}"></option>
+    <option value="Administrative Assistant">Administrative Assistant</option>
+    <option value="Receptionist">Receptionist</option>
+    <option value="Office Manager">Office Manager</option>
+    <option value="Auditing Clerk">Auditing Clerk</option>
+    <option value="Account Executive">Account Executive</option>
+    <option value="Branch Manager">Branch Manager</option>
+    <option value="Business Manager">Business Manager</option>
+  </select>
+
+  <label for="dateOfBirth">Date of Birth:</label>
+  <input type="text" name="dateOfBirth" id="dateOfBirth" th:value="${employee.dayOfBirth}">
+
+  <label for="dateOfStart">Date of Start:</label>
+  <input type="text" name="dateOfStart" id="dateOfStart" th:value="${employee.dateOfStart}">
+
+  <button type="submit">Sumbit</button>
+
+</form>
+
+</body>
+</html>

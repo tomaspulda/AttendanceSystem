@@ -71,9 +71,22 @@ public class EmployeeController {
   }
 
   @GetMapping("/edit/{employeeId}")
-  public String editEmployee(@PathVariable Long employeeId, Model model) throws Exception {
+  public String getEditEmployeeForm(@PathVariable Long employeeId, Model model) throws Exception {
     Employee employee = employeeService.getEmployeeById(employeeId);
     model.addAttribute("employee", employee);
     return "editemployee";
+  }
+
+  @PostMapping("/edit/{employeeId}")
+  public String editEmployee(@PathVariable Long employeeId, @RequestParam String name,
+      @RequestParam String position, @RequestParam String dateOfBirth,
+      @RequestParam String dateOfStart) throws Exception {
+    Employee employee = employeeService.getEmployeeById(employeeId);
+    employee.setName(name);
+    employee.setPosition(position);
+    employee.setDayOfBirth(dateOfBirth);
+    employee.setDateOfStart(dateOfStart);
+    employeeService.editEmployee(employee);
+    return "redirect:/";
   }
 }
