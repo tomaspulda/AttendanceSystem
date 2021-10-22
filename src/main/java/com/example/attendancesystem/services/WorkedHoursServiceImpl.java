@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class WorkedHoursServiceImpl implements WorkedHoursService{
+public class WorkedHoursServiceImpl implements WorkedHoursService {
 
   private WorkedHoursRepository workedHoursRepository;
   private EmployeeService employeeService;
@@ -33,7 +33,8 @@ public class WorkedHoursServiceImpl implements WorkedHoursService{
   public void setEnd(Employee employee) {
     WorkedHours workedHours = findLast(employee);
     workedHours.setEnd(LocalDateTime.now());
-    workedHours.setMinutesWorked(Duration.between(workedHours.getStart(), workedHours.getEnd()).toMinutes());
+    workedHours.setMinutesWorked(
+        Duration.between(workedHours.getStart(), workedHours.getEnd()).toMinutes());
     workedHoursRepository.save(workedHours);
     employeeService.switchAtWork(employee);
   }

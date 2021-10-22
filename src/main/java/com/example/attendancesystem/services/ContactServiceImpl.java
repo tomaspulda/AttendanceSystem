@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ContactServiceImpl implements ContactService{
+public class ContactServiceImpl implements ContactService {
 
   private ContactRepository contactRepository;
   private EmployeeService employeeService;
@@ -20,14 +20,14 @@ public class ContactServiceImpl implements ContactService{
     this.employeeService = employeeService;
   }
 
-
   @Override
   public Contact getEmployeesContact(Employee employee) {
     return contactRepository.getContactByEmployee(employee);
   }
 
   @Override
-  public void createNewContact(String street, int houseNumber, String city, int postCode, String country, Long phoneNumber, Long employeeId)
+  public void createNewContact(String street, int houseNumber, String city, int postCode,
+      String country, Long phoneNumber, Long employeeId)
       throws Exception {
     contactRepository.save(new Contact(street, houseNumber, city, postCode, country, phoneNumber,
         employeeService.getEmployeeById(employeeId)));

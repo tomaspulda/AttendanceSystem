@@ -74,12 +74,13 @@ public class HomeController {
     return "newcontact";
   }
 
-
   @PostMapping("/contact/new/{employeeId}")
-  public String createNewContact(@PathVariable Long employeeId, @RequestParam String street, @RequestParam int houseNumber,
+  public String createNewContact(@PathVariable Long employeeId, @RequestParam String street,
+      @RequestParam int houseNumber,
       @RequestParam String city, @RequestParam int postCode, @RequestParam String country,
       @RequestParam Long phoneNumber) throws Exception {
-    contactService.createNewContact(street, houseNumber, city, postCode, country, phoneNumber, employeeId);
+    contactService
+        .createNewContact(street, houseNumber, city, postCode, country, phoneNumber, employeeId);
     return "redirect:/";
   }
 }
