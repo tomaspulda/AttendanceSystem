@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create New Contact</title>
+</head>
+<body>
+<form th:action="@{/contact/new/{id}(id=${eId})}" method="post">
+  <label for="street">Street:</label>
+  <input type="text" name="street" id="street">
+
+  <label for="houseNumber">House Number:</label>
+  <input type="number" name="houseNumber" id="houseNumber">
+
+  <label for="city">City:</label>
+  <input type="text" name="city" id="city">
+
+  <label for="postCode">Post Code:</label>
+  <input type="number" name="postCode" id="postCode">
+
+  <label for="country">Country:</label>
+  <input type="text" name="country" id="country">
+
+  <label for="phoneNumber">Phone Number:</label>
+  <input type="number" name="phoneNumber" id="phoneNumber">
+
+  <button type="submit">Sumbit</button>
+
+</form>
+
+</body>
+</html>

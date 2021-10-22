@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Create New Employee</title>
+</head>
+<body>
+<form action="/employee/new" method="post">
+  <label for="name">Name:</label>
+  <input type="text" name="name" id="name">
+
+  <label for="position">Position:</label>
+  <select name="position" id="position">
+    <option value="Administrative Assistant">Administrative Assistant</option>
+    <option value="Receptionist">Receptionist</option>
+    <option value="Office Manager">Office Manager</option>
+    <option value="Auditing Clerk">Auditing Clerk</option>
+    <option value="Account Executive">Account Executive</option>
+    <option value="Branch Manager">Branch Manager</option>
+    <option value="Business Manager">Business Manager</option>
+  </select>
+
+  <label for="dateOfBirth">Date of Birth:</label>
+  <input type="date" name="dateOfBirth" id="dateOfBirth">
+
+  <label for="dateOfStart">Date of Start:</label>
+  <input type="date" name="dateOfStart" id="dateOfStart">
+
+  <button type="submit">Sumbit</button>
+
+</form>
+</body>
+</html>

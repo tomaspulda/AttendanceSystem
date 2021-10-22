@@ -31,4 +31,14 @@ public class Contact {
   @OneToOne
   private Employee employee;
 
+  public Contact(String street, int houseNumber, String city, int postCode, String country,
+      Long phoneNumber, Employee employee) {
+    this.street = street;
+    this.houseNumber = houseNumber;
+    this.city = city;
+    this.postCode = postCode;
+    this.country = country;
+    this.phoneNumber = phoneNumber;
+    this.employee = employee;
+  }
 }

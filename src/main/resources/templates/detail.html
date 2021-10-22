@@ -17,6 +17,8 @@
     <th>Street</th>
     <th>City</th>
     <th>Country</th>
+    <th>Edit Employee</th>
+    <th>Delete Employee</th>
   </tr>
   </thead>
   <tbody>
@@ -30,8 +32,11 @@
     <td th:text="${contact.street}"></td>
     <td th:text="${contact.city}"></td>
     <td th:text="${contact.country}"></td>
+    <td><a th:href="@{|/employee/edit/${employee.id}|}">Edit</a></td>
+    <td><a th:href="@{|/employee/delete/${employee.id}|}">DEL</a></td>
   </tr>
   </tbody>
 </table>
+<a href="/employee/new/">Add new employee</a>
 </body>
 </html>

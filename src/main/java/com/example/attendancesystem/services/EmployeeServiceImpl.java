@@ -36,5 +36,11 @@ public class EmployeeServiceImpl implements EmployeeService {
   public void switchAtWork(Employee employee) {
     employee.setAtWork(!employee.isAtWork());
     employeeRepository.save(employee);
+
+  }
+
+  @Override
+  public void createEmployee(Employee employee) {
+    employeeRepository.save(employee);
   }
 }

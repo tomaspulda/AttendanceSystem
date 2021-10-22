@@ -26,11 +26,9 @@ public class Employee {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   private String name;
-  @Temporal(value = TemporalType.DATE)
-  private Date dayOfBirth;
+  private String dayOfBirth;
   private String position;
-  @Temporal(value = TemporalType.DATE)
-  private Date dateOfStart;
+  private String dateOfStart;
   private boolean atWork;
 
   @OneToOne(mappedBy = "employee")
@@ -39,10 +37,16 @@ public class Employee {
   @OneToMany(mappedBy = "employee")
   private List<WorkedHours> workedHoursList;
 
-
   public Employee(String name, String position) {
     this.name = name;
     this.position = position;
     this.atWork = false;
+  }
+
+  public Employee(String name, String dayOfBirth, String position, String dateOfStart) {
+    this.name = name;
+    this.dayOfBirth = dayOfBirth;
+    this.position = position;
+    this.dateOfStart = dateOfStart;
   }
 }

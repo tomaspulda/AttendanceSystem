@@ -12,4 +12,6 @@ public interface EmployeeService {
 
   void switchAtWork(Employee employee);
 
+  void createEmployee(Employee employee);
+
 }
