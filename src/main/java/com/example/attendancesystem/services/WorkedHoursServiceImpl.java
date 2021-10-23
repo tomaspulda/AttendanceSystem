@@ -4,7 +4,6 @@ import com.example.attendancesystem.models.Employee;
 import com.example.attendancesystem.models.WorkedHours;
 import com.example.attendancesystem.repositories.WorkedHoursRepository;
 import java.time.Duration;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
@@ -35,8 +34,8 @@ public class WorkedHoursServiceImpl implements WorkedHoursService {
   public void setEnd(Employee employee) {
     WorkedHours workedHours = findLast(employee);
     workedHours.setEnd(LocalTime.now());
-    workedHours.setMinutesWorked(
-        Duration.between(workedHours.getStart(), workedHours.getEnd()).toMinutes());
+    workedHours.setHoursWorked(
+        (double) Duration.between(workedHours.getStart(), workedHours.getEnd()).toMinutes());
     workedHoursRepository.save(workedHours);
     employeeService.switchAtWork(employee);
   }
@@ -50,6 +49,4 @@ public class WorkedHoursServiceImpl implements WorkedHoursService {
   public List<WorkedHours> getAllByEmployee(Employee employee) {
     return workedHoursRepository.getByEmployeeOrderByDateDesc(employee);
   }
-
-
 }

@@ -1,11 +1,6 @@
 package com.example.attendancesystem.models;
 
-import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.Month;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,7 +30,7 @@ public class WorkedHours {
   private int mesic;
   private LocalTime start;
   private LocalTime end;
-  private Long minutesWorked;
+  private Double hoursWorked;
 
   @ManyToOne
   @JoinColumn
@@ -46,5 +41,9 @@ public class WorkedHours {
     this.start = start;
     this.employee = employee;
     this.mesic = date.getMonth()+1;
+  }
+
+  public void setHoursWorked(Double hoursWorked) {
+    this.hoursWorked = Math.round(hoursWorked/60*2) / 2.0;
   }
 }
