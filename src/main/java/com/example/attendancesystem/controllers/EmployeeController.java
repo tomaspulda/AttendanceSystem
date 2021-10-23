@@ -30,16 +30,22 @@ public class EmployeeController {
     this.contactService = contactService;
   }
 
+  @GetMapping("/")
+  public String getAllEmployees(Model model) {
+    model.addAttribute("employees", employeeService.getAllEmployees());
+    return "employees";
+  }
+
   @GetMapping("/start/{employee_id}")
   public String setShiftStart(@PathVariable Long employee_id) throws Exception {
     workedHoursService.setStart(employeeService.getEmployeeById(employee_id));
-    return "redirect:/";
+    return "redirect:/employee/";
   }
 
   @GetMapping("/end/{employee_id}")
   public String setShiftEnd(@PathVariable Long employee_id) throws Exception {
     workedHoursService.setEnd(employeeService.getEmployeeById(employee_id));
-    return "redirect:/";
+    return "redirect:/employee/";
   }
 
   @GetMapping("/detail/{employee_id}")
@@ -69,7 +75,7 @@ public class EmployeeController {
   @GetMapping("/delete/{employeeId}")
   public String deleteEmployee(@PathVariable Long employeeId) throws Exception {
     employeeService.deleteEmployee(employeeService.getEmployeeById(employeeId));
-    return "redirect:/";
+    return "redirect:/employee/";
   }
 
   @GetMapping("/edit/{employeeId}")
@@ -89,7 +95,7 @@ public class EmployeeController {
     employee.setDayOfBirth(dateOfBirth);
     employee.setDateOfStart(dateOfStart);
     employeeService.editEmployee(employee);
-    return "redirect:/";
+    return "redirect:/employee/";
   }
 
   @PostMapping("/search")

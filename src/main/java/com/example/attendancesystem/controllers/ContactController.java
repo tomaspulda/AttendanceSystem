@@ -42,7 +42,7 @@ public class ContactController {
       @RequestParam Long phoneNumber) throws Exception {
     contactService
         .createNewContact(street, houseNumber, city, postCode, country, phoneNumber, employeeId);
-    return "redirect:/";
+    return "redirect:/employee/";
   }
 
 }

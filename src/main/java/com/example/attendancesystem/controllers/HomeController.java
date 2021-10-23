@@ -25,8 +25,7 @@ public class HomeController {
   }
 
   @GetMapping("/")
-  public String getAllEmployees(Model model) {
-    model.addAttribute("employees", employeeService.getAllEmployees());
-    return "employees";
+  public String home() {
+    return "index";
   }
 }
