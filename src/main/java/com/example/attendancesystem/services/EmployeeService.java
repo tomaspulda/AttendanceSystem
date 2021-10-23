@@ -17,4 +17,6 @@ public interface EmployeeService {
 
   void editEmployee(Employee employee);
 
+  List<Employee> searchEmployee(String keyword);
+
 }

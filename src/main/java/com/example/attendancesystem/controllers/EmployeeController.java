@@ -89,4 +89,10 @@ public class EmployeeController {
     employeeService.editEmployee(employee);
     return "redirect:/";
   }
+
+  @PostMapping("/search")
+  public String searchEmployee(@RequestParam String keyword, Model model) {
+    model.addAttribute("employees", employeeService.searchEmployee(keyword));
+    return "employees";
+  }
 }

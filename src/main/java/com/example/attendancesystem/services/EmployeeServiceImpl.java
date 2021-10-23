@@ -20,7 +20,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
   @Override
   public List<Employee> getAllEmployees() {
-    return employeeRepository.findAll();
+    return employeeRepository.findAllByOrderByName();
   }
 
   @Override
@@ -53,4 +53,11 @@ public class EmployeeServiceImpl implements EmployeeService {
   public void editEmployee(Employee employee) {
     employeeRepository.save(employee);
   }
+
+  @Override
+  public List<Employee> searchEmployee(String keyword) {
+    return employeeRepository.findAllByNameContainingOrPositionContaining(keyword, keyword);
+  }
+
+
 }
