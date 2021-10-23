@@ -47,6 +47,8 @@ public class EmployeeController {
     model.addAttribute("employee", employeeService.getEmployeeById(employee_id));
     model.addAttribute("contact", contactService.getEmployeesContact(
         employeeService.getEmployeeById(employee_id)));
+    model.addAttribute("shifts", workedHoursService.getAllByEmployee(
+        employeeService.getEmployeeById(employee_id)));
     return "detail";
   }
 

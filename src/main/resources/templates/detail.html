@@ -37,7 +37,26 @@
   </tr>
   </tbody>
 </table>
-<a href="/employee/new/">Add new employee</a>
+<br>
+<table>
+  <thead>
+  <tr>
+    <th>Date</th>
+    <th>Start</th>
+    <th>End</th>
+    <th>Hours worked</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="shift : ${shifts}">
+    <td th:text="${shift.date}"></td>
+    <td th:text="${shift.getStart()}"></td>
+    <td th:text="${shift.end}"></td>
+    <td th:text="${shift.getMinutesWorked()}"></td>
+
+  </tr>
+  </tbody>
+</table>
 <a href="/">Back to list of all employees</a>
 </body>
 </html>

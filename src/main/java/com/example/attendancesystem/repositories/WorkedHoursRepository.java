@@ -10,4 +10,6 @@ import org.springframework.stereotype.Repository;
 public interface WorkedHoursRepository extends JpaRepository<WorkedHours, Long> {
 
   List<WorkedHours> getByEmployeeOrderByIdDesc(Employee employee);
+
+  List<WorkedHours> getByEmployeeOrderByDateDesc(Employee employee);
 }

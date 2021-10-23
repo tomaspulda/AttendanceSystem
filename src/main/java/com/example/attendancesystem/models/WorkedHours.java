@@ -1,6 +1,11 @@
 package com.example.attendancesystem.models;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.Month;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,17 +32,19 @@ public class WorkedHours {
   private Long id;
   @Temporal(value = TemporalType.DATE)
   private Date date;
-  private LocalDateTime start;
-  private LocalDateTime end;
+  private int mesic;
+  private LocalTime start;
+  private LocalTime end;
   private Long minutesWorked;
 
   @ManyToOne
   @JoinColumn
   private Employee employee;
 
-  public WorkedHours(Date date, LocalDateTime start, Employee employee) {
+  public WorkedHours(Date date, LocalTime start, Employee employee) {
     this.date = date;
     this.start = start;
     this.employee = employee;
+    this.mesic = date.getMonth()+1;
   }
 }

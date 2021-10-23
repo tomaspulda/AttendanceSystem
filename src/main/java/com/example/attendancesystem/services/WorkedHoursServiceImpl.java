@@ -5,7 +5,9 @@ import com.example.attendancesystem.models.WorkedHours;
 import com.example.attendancesystem.repositories.WorkedHoursRepository;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Date;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,14 +27,14 @@ public class WorkedHoursServiceImpl implements WorkedHoursService {
 
   @Override
   public void setStart(Employee employee) {
-    workedHoursRepository.save(new WorkedHours(new Date(), LocalDateTime.now(), employee));
+    workedHoursRepository.save(new WorkedHours(new Date(), LocalTime.now(), employee));
     employeeService.switchAtWork(employee);
   }
 
   @Override
   public void setEnd(Employee employee) {
     WorkedHours workedHours = findLast(employee);
-    workedHours.setEnd(LocalDateTime.now());
+    workedHours.setEnd(LocalTime.now());
     workedHours.setMinutesWorked(
         Duration.between(workedHours.getStart(), workedHours.getEnd()).toMinutes());
     workedHoursRepository.save(workedHours);
@@ -43,4 +45,11 @@ public class WorkedHoursServiceImpl implements WorkedHoursService {
   public WorkedHours findLast(Employee employee) {
     return workedHoursRepository.getByEmployeeOrderByIdDesc(employee).get(0);
   }
+
+  @Override
+  public List<WorkedHours> getAllByEmployee(Employee employee) {
+    return workedHoursRepository.getByEmployeeOrderByDateDesc(employee);
+  }
+
+
 }
