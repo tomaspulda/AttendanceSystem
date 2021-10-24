@@ -55,7 +55,7 @@ public class EmployeeController {
         employeeService.getEmployeeById(employee_id)));
     model.addAttribute("shifts", workedHoursService.getAllByEmployee(
         employeeService.getEmployeeById(employee_id)));
-    return "detail";
+    return "employeedetail";
   }
 
   @GetMapping("/new")

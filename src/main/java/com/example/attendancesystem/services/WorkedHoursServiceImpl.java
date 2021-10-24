@@ -34,13 +34,15 @@ public class WorkedHoursServiceImpl implements WorkedHoursService {
   public void setEnd(Employee employee) {
     WorkedHours workedHours = findLast(employee);
     workedHours.setEnd(LocalTime.now());
-    if (workedHours.getStart().isAfter(workedHours.getEnd())) {
+    if (workedHours.getStart().isBefore(workedHours.getEnd())) {
       workedHours.setHoursWorked(
           (double) Duration.between(workedHours.getStart(), workedHours.getEnd()).toMinutes());
     } else {
       workedHours.setHoursWorked(
-          (double) (Duration.between(workedHours.getStart(), LocalTime.MIDNIGHT).toMinutes() + (
-              Duration.between(LocalTime.MIDNIGHT, workedHours.getEnd())).toMinutes()));
+          (double) (Duration.between(workedHours.getStart(), LocalTime.of(23, 59, 59)).toMinutes()
+              + Duration.between(LocalTime.MIDNIGHT, workedHours.getEnd()).toMinutes())
+      );
+
     }
 
     workedHoursRepository.save(workedHours);
