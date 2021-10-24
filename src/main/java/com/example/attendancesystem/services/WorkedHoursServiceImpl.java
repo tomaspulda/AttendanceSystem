@@ -57,4 +57,17 @@ public class WorkedHoursServiceImpl implements WorkedHoursService {
   public List<WorkedHours> getAllByEmployee(Employee employee) {
     return workedHoursRepository.getByEmployeeOrderByDateDesc(employee);
   }
+
+  @Override
+  public int getMonthByEmployee(Employee employee, int month) {
+    List<WorkedHours> workedHoursList = workedHoursRepository
+        .findAllByEmployeeAndMonth(employee, month);
+    int hoursWorkedInMonth = 0;
+    for (WorkedHours workedHours : workedHoursList) {
+      hoursWorkedInMonth += workedHours.getHoursWorked();
+    }
+    return hoursWorkedInMonth;
+  }
+
+
 }

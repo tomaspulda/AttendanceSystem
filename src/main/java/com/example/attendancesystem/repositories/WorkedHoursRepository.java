@@ -12,4 +12,6 @@ public interface WorkedHoursRepository extends JpaRepository<WorkedHours, Long> 
   List<WorkedHours> getByEmployeeOrderByIdDesc(Employee employee);
 
   List<WorkedHours> getByEmployeeOrderByDateDesc(Employee employee);
+
+  List<WorkedHours> findAllByEmployeeAndMonth(Employee employee, int month);
 }

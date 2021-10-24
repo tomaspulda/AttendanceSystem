@@ -13,4 +13,6 @@ public interface WorkedHoursService {
   WorkedHours findLast(Employee employee);
 
   List<WorkedHours> getAllByEmployee(Employee employee);
+
+  int getMonthByEmployee(Employee employee, int month);
 }
