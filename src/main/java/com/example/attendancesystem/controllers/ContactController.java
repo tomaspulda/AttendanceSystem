@@ -44,5 +44,4 @@ public class ContactController {
         .createNewContact(street, houseNumber, city, postCode, country, phoneNumber, employeeId);
     return "redirect:/employee/";
   }
-
 }

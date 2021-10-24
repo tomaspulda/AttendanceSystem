@@ -58,6 +58,4 @@ public class EmployeeServiceImpl implements EmployeeService {
   public List<Employee> searchEmployee(String keyword) {
     return employeeRepository.findAllByNameContainingOrPositionContaining(keyword, keyword);
   }
-
-
 }

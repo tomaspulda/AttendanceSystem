@@ -44,7 +44,6 @@ public class WorkedHoursServiceImpl implements WorkedHoursService {
       );
 
     }
-
     workedHoursRepository.save(workedHours);
     employeeService.switchAtWork(employee);
   }

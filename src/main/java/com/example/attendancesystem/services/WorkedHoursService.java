@@ -13,5 +13,4 @@ public interface WorkedHoursService {
   WorkedHours findLast(Employee employee);
 
   List<WorkedHours> getAllByEmployee(Employee employee);
-
 }

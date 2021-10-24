@@ -27,7 +27,7 @@ public class WorkedHours {
   private Long id;
   @Temporal(value = TemporalType.DATE)
   private Date date;
-  private int mesic;
+  private int month;
   private LocalTime start;
   private LocalTime end;
   private Double hoursWorked;
@@ -40,7 +40,7 @@ public class WorkedHours {
     this.date = date;
     this.start = start;
     this.employee = employee;
-    this.mesic = date.getMonth() + 1;
+    this.month = date.getMonth() + 1;
   }
 
   public void setHoursWorked(Double hoursWorked) {
