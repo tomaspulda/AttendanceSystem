@@ -40,10 +40,10 @@ public class WorkedHours {
     this.date = date;
     this.start = start;
     this.employee = employee;
-    this.mesic = date.getMonth()+1;
+    this.mesic = date.getMonth() + 1;
   }
 
   public void setHoursWorked(Double hoursWorked) {
-    this.hoursWorked = Math.round(hoursWorked/60*2) / 2.0;
+    this.hoursWorked = Math.round(hoursWorked / 60 * 2) / 2.0;
   }
 }

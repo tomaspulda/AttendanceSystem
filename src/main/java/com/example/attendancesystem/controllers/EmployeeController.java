@@ -65,8 +65,9 @@ public class EmployeeController {
 
   @PostMapping("/new")
   public String createNewEmployee(@RequestParam String name, @RequestParam String dateOfBirth,
-      @RequestParam String dateOfStart, @RequestParam String position) {
-    Employee employee = new Employee(name, dateOfBirth, position, dateOfStart);
+      @RequestParam String dateOfStart, @RequestParam String position,
+      @RequestParam int hourlyWage) {
+    Employee employee = new Employee(name, dateOfBirth, position, dateOfStart, hourlyWage);
     employeeService.createEmployee(employee);
     Long id = employee.getId();
     return "redirect:/contact/new/" + id;
@@ -88,12 +89,13 @@ public class EmployeeController {
   @PostMapping("/edit/{employeeId}")
   public String editEmployee(@PathVariable Long employeeId, @RequestParam String name,
       @RequestParam String position, @RequestParam String dateOfBirth,
-      @RequestParam String dateOfStart) throws Exception {
+      @RequestParam String dateOfStart, @RequestParam int hourlyWage) throws Exception {
     Employee employee = employeeService.getEmployeeById(employeeId);
     employee.setName(name);
     employee.setPosition(position);
     employee.setDayOfBirth(dateOfBirth);
     employee.setDateOfStart(dateOfStart);
+    employee.setHourlyWage(hourlyWage);
     employeeService.editEmployee(employee);
     return "redirect:/employee/";
   }

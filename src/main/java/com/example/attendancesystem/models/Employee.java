@@ -27,6 +27,7 @@ public class Employee {
   private String position;
   private String dateOfStart;
   private boolean atWork;
+  private int hourlyWage;
 
   @OneToOne(mappedBy = "employee")
   private Contact contact;
@@ -40,10 +41,13 @@ public class Employee {
     this.atWork = false;
   }
 
-  public Employee(String name, String dayOfBirth, String position, String dateOfStart) {
+  public Employee(String name, String dayOfBirth, String position, String dateOfStart,
+      int hourlyWage) {
     this.name = name;
     this.dayOfBirth = dayOfBirth;
     this.position = position;
     this.dateOfStart = dateOfStart;
+    this.hourlyWage = hourlyWage;
+    this.atWork = false;
   }
 }
