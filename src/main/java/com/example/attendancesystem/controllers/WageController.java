@@ -32,13 +32,15 @@ public class WageController {
 
   @GetMapping("/{employee_id}")
   public String getWageCalculator(@PathVariable Long employee_id, Model model) throws Exception {
-    model.addAttribute("months", workedHoursService.getEmployeesMonths(employeeService.getEmployeeById(employee_id)));
+    model.addAttribute("months",
+        workedHoursService.getEmployeesMonths(employeeService.getEmployeeById(employee_id)));
     model.addAttribute("employee", employee_id);
     return "wagecalculator";
   }
 
   @PostMapping("/calculator/{employee_id}")
-  public String calculateWage(@PathVariable Long employee_id, @RequestParam String month, @RequestParam int bonus)
+  public String calculateWage(@PathVariable Long employee_id, @RequestParam String month,
+      @RequestParam int bonus)
       throws Exception {
     Employee employee = employeeService.getEmployeeById(employee_id);
     wageService.calculateWage(employee, month, bonus);
@@ -54,6 +56,4 @@ public class WageController {
     model.addAttribute("employee", employee);
     return "wage";
   }
-
-
 }

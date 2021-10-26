@@ -33,7 +33,6 @@ public class WorkedHours {
   private LocalTime end;
   private Double hoursWorked;
 
-
   @ManyToOne
   @JoinColumn
   private Employee employee;
@@ -42,8 +41,8 @@ public class WorkedHours {
     this.date = date;
     this.start = start;
     this.employee = employee;
-    this.month = String.valueOf(date.getMonth() + 1) + "-" + String.valueOf(date.getYear()+1900);
-    this.year = date.getYear()+1900;
+    this.month = String.valueOf(date.getMonth() + 1) + "-" + String.valueOf(date.getYear() + 1900);
+    this.year = date.getYear() + 1900;
   }
 
   public void setHoursWorked(Double hoursWorked) {

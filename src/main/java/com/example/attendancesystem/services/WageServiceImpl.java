@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class WageServiceImpl implements WageService{
+public class WageServiceImpl implements WageService {
 
   private WorkedHoursService workedHoursService;
   private WageRepository wageRepository;
@@ -25,25 +25,25 @@ public class WageServiceImpl implements WageService{
     int hourlyWage = employee.getHourlyWage();
     Wage wage = createWage(employee, month, bonus);
 
-    int grossWage = sumOfHours*hourlyWage;
+    int grossWage = sumOfHours * hourlyWage;
     wage.setGrossWage(grossWage);
 
     int incomeTax = (int) Math.ceil((bonus + grossWage) * 0.15) - taxCredit();
-    if (incomeTax<0) {
+    if (incomeTax < 0) {
       incomeTax = 0;
     }
 
-    int socIns = (int) Math.ceil((grossWage+bonus)*0.065);
+    int socIns = (int) Math.ceil((grossWage + bonus) * 0.065);
     wage.setSocialInsuranceEmplee(socIns);
-    int healthIns = (int) Math.ceil((grossWage+bonus)*0.045);
+    int healthIns = (int) Math.ceil((grossWage + bonus) * 0.045);
     wage.setHealthInsuranceEmplee(healthIns);
 
-    int socInsEmplr = (int) Math.ceil((bonus + grossWage) * 0.25);
+    int socInsEmplr = (int) Math.ceil((bonus + grossWage) * 0.248);
     wage.setSocialInsuranceEmplr(socInsEmplr);
     int healtInsEmplr = (int) Math.ceil((bonus + grossWage) * 0.09);
     wage.setHealthInsuranceEmplr(healtInsEmplr);
 
-    wage.setNetWage(wage.getGrossWage() - incomeTax - socIns - healthIns);
+    wage.setNetWage(wage.getGrossWage() + bonus - incomeTax - socIns - healthIns);
     wageRepository.save(wage);
   }
 

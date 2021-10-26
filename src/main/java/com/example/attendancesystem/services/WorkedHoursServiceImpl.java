@@ -72,9 +72,9 @@ public class WorkedHoursServiceImpl implements WorkedHoursService {
 
   @Override
   public List<String> getEmployeesMonths(Employee employee) {
-    List<WorkedHours> workedHoursList =  workedHoursRepository.findAllByEmployee(employee);
+    List<WorkedHours> workedHoursList = workedHoursRepository.findAllByEmployee(employee);
     List<String> integerList = new ArrayList<>();
-    for (WorkedHours hours:workedHoursList) {
+    for (WorkedHours hours : workedHoursList) {
       if (!integerList.contains(hours.getMonth())) {
         integerList.add(hours.getMonth());
       }

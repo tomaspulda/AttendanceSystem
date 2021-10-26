@@ -1,6 +1,5 @@
 package com.example.attendancesystem.repositories;
 
-import com.example.attendancesystem.models.Employee;
 import com.example.attendancesystem.models.Wage;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
