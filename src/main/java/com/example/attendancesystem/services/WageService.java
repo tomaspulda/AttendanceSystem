@@ -9,9 +9,9 @@ public interface WageService {
 
   int calculateTax(Wage wage);
 
-  Wage createWage(Employee employee, String month, int bonus, int kids, boolean spouse,
-      boolean handicappedI, boolean handicappedII_III, boolean physicalDisability,
-      boolean student);
+  void createWage(int bonus, String month, int kids, boolean spouse, boolean handicappedI,
+      boolean handicappedII_III, boolean physicalDisability, boolean student,
+      Employee employee);
 
   Wage getWage(Employee employee, String month);
 }

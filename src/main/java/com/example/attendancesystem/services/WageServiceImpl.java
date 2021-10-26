@@ -21,6 +21,19 @@ public class WageServiceImpl implements WageService {
   }
 
   @Override
+  public void createWage(int bonus, String month, int kids, boolean spouse, boolean handicappedI,
+      boolean handicappedII_III, boolean physicalDisability, boolean student,
+      Employee employee) {
+    List<Wage> wageList = wageRepository
+        .findAllByEmployee_IdAndMonthOrderByIdDesc(employee.getId(), month);
+    for (Wage w : wageList) {
+      wageRepository.delete(w);
+    }
+    Wage wage = new Wage(bonus, month, kids, spouse, handicappedI, handicappedII_III, physicalDisability, student, employee);
+    calculateWage(wage);
+  }
+
+  @Override
   public void calculateWage(Wage wage) {
     int sumOfHours = workedHoursService.getMonthByEmployee(wage.getEmployee(), wage.getMonth());
     int hourlyWage = wage.getEmployee().getHourlyWage();
@@ -39,7 +52,7 @@ public class WageServiceImpl implements WageService {
     wage.setHealthInsuranceEmplr(healthInsEmplr);
 
     wage.setIncomeTax(calculateTax(wage));
-    wage.setNetWage(wage.getGrossWage() + wage.getBonus() - socIns - healthIns - calculateTax(wage));    //odečíst slevu!
+    wage.setNetWage(wage.getGrossWage() + wage.getBonus() - socIns - healthIns - calculateTax(wage));
     wageRepository.save(wage);
   }
 
@@ -73,24 +86,12 @@ public class WageServiceImpl implements WageService {
     if (wage.getKids() == 2) {
       incomeTax -= 2884;
     }
-    
+
     if (wage.getKids() >= 3) {
       int discount = 2884 + ((wage.getKids()-2)*2017);
       incomeTax -= discount;
     }
     return incomeTax;
-  }
-
-  @Override
-  public Wage createWage(Employee employee, String month, int bonus, int kids, boolean spouse,
-      boolean handicappedI, boolean handicappedII_III, boolean physicalDisability,
-      boolean student) {
-    List<Wage> wageList = wageRepository
-        .findAllByEmployee_IdAndMonthOrderByIdDesc(employee.getId(), month);
-    for (Wage wage : wageList) {
-      wageRepository.delete(wage);
-    }
-    return wageRepository.save(new Wage(month, employee, bonus));
   }
 
   @Override

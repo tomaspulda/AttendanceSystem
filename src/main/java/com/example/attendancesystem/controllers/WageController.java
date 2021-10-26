@@ -49,8 +49,7 @@ public class WageController {
       @RequestParam(defaultValue = "false") boolean student)
       throws Exception {
     Employee employee = employeeService.getEmployeeById(employee_id);
-    Wage wage = new Wage(bonus, month, kids, spouse, handicappedI, handicappedII_III, physicalDisability, student, employee);
-    wageService.calculateWage(wage);
+    wageService.createWage(bonus, month, kids, spouse, handicappedI, handicappedII_III, physicalDisability, student, employee);
 
     return "redirect:/wage/" + employee_id + "/" + month;
   }
