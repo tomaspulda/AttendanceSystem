@@ -1,10 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+  <meta charset="UTF-8" >
   <title>Wage Calculator</title>
 </head>
 <body>
+<a href="/">Home</a>
+
+<form th:action="@{/wage/calculator/{employee_id}(employee_id=${employee})}" method="post">
+  <label for="month">Select Month:</label>
+  <select name="month" id="month">
+    <option th:each="month : ${months}" th:text="${month}" th:value="${month}" ></option>
+  </select>
+  <label for="bonus">Bonus:</label>
+  <input type="number" name="bonus" id="bonus" required="required">
+  <button type="submit">Submit</button>
+</form>
+
 
 </body>
 </html>

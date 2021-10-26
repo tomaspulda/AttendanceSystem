@@ -1,9 +1,13 @@
 package com.example.attendancesystem.models;
 
+import java.time.LocalDateTime;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,12 +32,13 @@ public class Wage {
   private int socialInsuranceEmplee;
   private int incomeTax;
   private int netWage;
-  private int month;
+  private String month;
 
-  @OneToOne
+  @ManyToOne
+  @JoinColumn
   private Employee employee;
 
-  public Wage(int month, Employee employee, int bonus) {
+  public Wage(String month, Employee employee, int bonus) {
     this.month = month;
     this.employee = employee;
     this.bonus = bonus;

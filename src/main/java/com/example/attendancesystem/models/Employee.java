@@ -32,8 +32,8 @@ public class Employee {
   @OneToOne(mappedBy = "employee")
   private Contact contact;
 
-  @OneToOne(mappedBy = "employee")
-  private Wage wage;
+  @OneToMany(mappedBy = "employee")
+  private List<Wage> wageList;
 
   @OneToMany(mappedBy = "employee")
   private List<WorkedHours> workedHoursList;

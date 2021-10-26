@@ -20,7 +20,7 @@ public class WageServiceImpl implements WageService{
   }
 
   @Override
-  public void calculateWage(Employee employee, int month, int bonus) {
+  public void calculateWage(Employee employee, String month, int bonus) {
     int sumOfHours = workedHoursService.getMonthByEmployee(employee, month);
     int hourlyWage = employee.getHourlyWage();
     Wage wage = createWage(employee, month, bonus);
@@ -28,9 +28,10 @@ public class WageServiceImpl implements WageService{
     int grossWage = sumOfHours*hourlyWage;
     wage.setGrossWage(grossWage);
 
-    wage.setBonus(bonus);
-
     int incomeTax = (int) Math.ceil((bonus + grossWage) * 0.15) - taxCredit();
+    if (incomeTax<0) {
+      incomeTax = 0;
+    }
 
     int socIns = (int) Math.ceil((grossWage+bonus)*0.065);
     wage.setSocialInsuranceEmplee(socIns);
@@ -43,6 +44,7 @@ public class WageServiceImpl implements WageService{
     wage.setHealthInsuranceEmplr(healtInsEmplr);
 
     wage.setNetWage(wage.getGrossWage() - incomeTax - socIns - healthIns);
+    wageRepository.save(wage);
   }
 
   @Override
@@ -51,7 +53,12 @@ public class WageServiceImpl implements WageService{
   }
 
   @Override
-  public Wage createWage(Employee employee, int month, int bonus) {
+  public Wage createWage(Employee employee, String month, int bonus) {
     return wageRepository.save(new Wage(month, employee, bonus));
+  }
+
+  @Override
+  public Wage getWage(Employee employee, String month) {
+    return wageRepository.findAllByEmployee_IdAndMonth(employee.getId(), month).get(0);
   }
 }

@@ -2,6 +2,7 @@ package com.example.attendancesystem.services;
 
 import com.example.attendancesystem.models.Employee;
 import com.example.attendancesystem.models.WorkedHours;
+import java.time.Month;
 import java.util.List;
 
 public interface WorkedHoursService {
@@ -14,5 +15,7 @@ public interface WorkedHoursService {
 
   List<WorkedHours> getAllByEmployee(Employee employee);
 
-  int getMonthByEmployee(Employee employee, int month);
+  int getMonthByEmployee(Employee employee, String month);
+
+  List<String> getEmployeesMonths(Employee employee);
 }

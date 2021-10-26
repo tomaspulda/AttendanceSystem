@@ -27,10 +27,12 @@ public class WorkedHours {
   private Long id;
   @Temporal(value = TemporalType.DATE)
   private Date date;
-  private int month;
+  private String month;
+  private int year;
   private LocalTime start;
   private LocalTime end;
   private Double hoursWorked;
+
 
   @ManyToOne
   @JoinColumn
@@ -40,7 +42,8 @@ public class WorkedHours {
     this.date = date;
     this.start = start;
     this.employee = employee;
-    this.month = date.getMonth() + 1;
+    this.month = String.valueOf(date.getMonth() + 1) + "-" + String.valueOf(date.getYear()+1900);
+    this.year = date.getYear()+1900;
   }
 
   public void setHoursWorked(Double hoursWorked) {

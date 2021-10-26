@@ -5,6 +5,7 @@ import com.example.attendancesystem.models.WorkedHours;
 import com.example.attendancesystem.repositories.WorkedHoursRepository;
 import java.time.Duration;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,7 +60,7 @@ public class WorkedHoursServiceImpl implements WorkedHoursService {
   }
 
   @Override
-  public int getMonthByEmployee(Employee employee, int month) {
+  public int getMonthByEmployee(Employee employee, String month) {
     List<WorkedHours> workedHoursList = workedHoursRepository
         .findAllByEmployeeAndMonth(employee, month);
     int hoursWorkedInMonth = 0;
@@ -69,5 +70,15 @@ public class WorkedHoursServiceImpl implements WorkedHoursService {
     return hoursWorkedInMonth;
   }
 
-
+  @Override
+  public List<String> getEmployeesMonths(Employee employee) {
+    List<WorkedHours> workedHoursList =  workedHoursRepository.findAllByEmployee(employee);
+    List<String> integerList = new ArrayList<>();
+    for (WorkedHours hours:workedHoursList) {
+      if (!integerList.contains(hours.getMonth())) {
+        integerList.add(hours.getMonth());
+      }
+    }
+    return integerList;
+  }
 }

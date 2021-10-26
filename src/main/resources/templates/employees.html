@@ -19,6 +19,7 @@
     <th>Shift Start</th>
     <th>Shift End</th>
     <th>Employees Details</th>
+    <th>Calculate Wage</th>
   </tr>
   </thead>
   <tbody>
@@ -30,6 +31,7 @@
     <td th:if="${employee.atWork}"><a th:href="@{|/employee/end/${employee.id}/|}">Shift End</a></td>
     <td th:unless="${employee.atWork}">Shift did not start yet!</td>
     <td><a th:href="@{|/employee/detail/${employee.id}|}">Employee Details</a></td>
+    <td><a th:href="@{|/wage/${employee.id}|}">Calculate Wage</a></td>
   </tr>
   </tbody>
 </table>

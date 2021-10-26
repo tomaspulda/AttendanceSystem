@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Wage</title>
+</head>
+<body>
+<a href="/">Home</a>
+<table>
+  <thead>
+  <tr>
+    <th>Employee name</th>
+    <th>Employee position</th>
+    <th>Month</th>
+    <th>Gross wage</th>
+    <th>Social Ins. Employee</th>
+    <th>Social Ins. Employer</th>
+    <th>Health Ins. Employee</th>
+    <th>Health Ins. Employer</th>
+    <th>Net wage</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td th:text="${employee.name}"></td>
+    <td th:text="${employee.position}"></td>
+    <td th:text="${wage.month}"></td>
+    <td th:text="${wage.grossWage}"></td>
+    <td th:text="${wage.socialInsuranceEmplee}"></td>
+    <td th:text="${wage.socialInsuranceEmplr}"></td>
+    <td th:text="${wage.healthInsuranceEmplee}"></td>
+    <td th:text="${wage.healthInsuranceEmplr}"></td>
+    <td th:text="${wage.netWage}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
