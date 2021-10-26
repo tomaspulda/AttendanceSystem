@@ -5,11 +5,13 @@ import com.example.attendancesystem.models.Wage;
 
 public interface WageService {
 
-  void calculateWage(Employee employee, String month, int bonus);
+  void calculateWage(Wage wage);
 
-  int taxCredit();
+  int calculateTax(Wage wage);
 
-  Wage createWage(Employee employee, String month, int bonus);
+  Wage createWage(Employee employee, String month, int bonus, int kids, boolean spouse,
+      boolean handicappedI, boolean handicappedII_III, boolean physicalDisability,
+      boolean student);
 
   Wage getWage(Employee employee, String month);
 }

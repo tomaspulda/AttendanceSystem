@@ -30,6 +30,12 @@ public class Wage {
   private int incomeTax;
   private int netWage;
   private String month;
+  private int kids;
+  private boolean spouse;
+  private boolean handicappedI;
+  private boolean handicappedII_III;
+  private boolean physicalDisability;
+  private boolean student;
 
   @ManyToOne
   @JoinColumn
@@ -39,5 +45,19 @@ public class Wage {
     this.month = month;
     this.employee = employee;
     this.bonus = bonus;
+  }
+
+  public Wage(int bonus, String month, int kids, boolean spouse, boolean handicappedI,
+      boolean handicappedII_III, boolean physicalDisability, boolean student,
+      Employee employee) {
+    this.bonus = bonus;
+    this.month = month;
+    this.kids = kids;
+    this.spouse = spouse;
+    this.handicappedI = handicappedI;
+    this.handicappedII_III = handicappedII_III;
+    this.physicalDisability = physicalDisability;
+    this.student = student;
+    this.employee = employee;
   }
 }

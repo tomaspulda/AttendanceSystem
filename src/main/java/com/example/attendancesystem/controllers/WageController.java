@@ -1,6 +1,7 @@
 package com.example.attendancesystem.controllers;
 
 import com.example.attendancesystem.models.Employee;
+import com.example.attendancesystem.models.Wage;
 import com.example.attendancesystem.services.EmployeeService;
 import com.example.attendancesystem.services.WageService;
 import com.example.attendancesystem.services.WorkedHoursService;
@@ -40,10 +41,16 @@ public class WageController {
 
   @PostMapping("/calculator/{employee_id}")
   public String calculateWage(@PathVariable Long employee_id, @RequestParam String month,
-      @RequestParam int bonus)
+      @RequestParam int bonus, @RequestParam int kids,
+      @RequestParam(defaultValue = "false") boolean spouse,
+      @RequestParam(defaultValue = "false") boolean handicappedI,
+      @RequestParam(defaultValue = "false") boolean handicappedII_III,
+      @RequestParam(defaultValue = "false") boolean physicalDisability,
+      @RequestParam(defaultValue = "false") boolean student)
       throws Exception {
     Employee employee = employeeService.getEmployeeById(employee_id);
-    wageService.calculateWage(employee, month, bonus);
+    Wage wage = new Wage(bonus, month, kids, spouse, handicappedI, handicappedII_III, physicalDisability, student, employee);
+    wageService.calculateWage(wage);
 
     return "redirect:/wage/" + employee_id + "/" + month;
   }

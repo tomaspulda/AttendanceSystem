@@ -23,7 +23,7 @@
   </select>
 
   <label for="hourlyWage">Hourly Wage:</label>
-  <input type="number" name="hourlyWage" id="hourlyWage">
+  <input type="number" name="hourlyWage" id="hourlyWage" th:value="${employee.hourlyWage}">
 
   <label for="dateOfBirth">Date of Birth:</label>
   <input type="text" name="dateOfBirth" id="dateOfBirth" th:value="${employee.dayOfBirth}">

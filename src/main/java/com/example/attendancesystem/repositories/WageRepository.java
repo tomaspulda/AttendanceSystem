@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface WageRepository extends JpaRepository<Wage, Long> {
 
-  List<Wage> findAllByEmployee_IdAndMonth(Long id, String month);
+  List<Wage> findAllByEmployee_IdAndMonthOrderByIdDesc(Long id, String month);
 }
