@@ -6,6 +6,8 @@
 </head>
 <body>
 <a href="/">Home</a>
+<br>
+<h3>Edit Employee</h3>
 <form th:action="@{/employee/edit/{id}(id=${employee.id})}" method="post">
   <label for="name">Name:</label>
   <input type="text" name="name" id="name" th:value="${employee.name}">

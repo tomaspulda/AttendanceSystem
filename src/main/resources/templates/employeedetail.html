@@ -6,6 +6,8 @@
 </head>
 <body>
 <a href="/">Home</a>
+<br>
+<h3>Employee Details</h3>
 <table>
   <thead>
   <tr>
@@ -41,6 +43,7 @@
   </tbody>
 </table>
 <br>
+<h3>All shifts</h3>
 <table>
   <thead>
   <tr>
@@ -59,6 +62,15 @@
   </tr>
   </tbody>
 </table>
+<br>
+<h3>All wages</h3>
+<table>
+  <tr th:each="wage : ${wages}">
+    <td><a th:href="@{/wage/{id}/{month}(month=${wage.month},id=${wage.employee.id})}" th:text="${wage.month}">--</a></td>
+  </tr>
+</table>
+<br>
+<br>
 <a href="/employee/">Back to list of all employees</a>
 </body>
 </html>

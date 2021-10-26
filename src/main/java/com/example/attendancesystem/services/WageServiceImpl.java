@@ -98,4 +98,11 @@ public class WageServiceImpl implements WageService {
   public Wage getWage(Employee employee, String month) {
     return wageRepository.findAllByEmployee_IdAndMonthOrderByIdDesc(employee.getId(), month).get(0);
   }
+
+  @Override
+  public List<Wage> getAllEmployeesWages(Long id) {
+    return wageRepository.findAllByEmployee_Id(id);
+  }
+
+
 }

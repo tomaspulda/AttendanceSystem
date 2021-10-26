@@ -3,6 +3,7 @@ package com.example.attendancesystem.controllers;
 import com.example.attendancesystem.models.Employee;
 import com.example.attendancesystem.services.ContactService;
 import com.example.attendancesystem.services.EmployeeService;
+import com.example.attendancesystem.services.WageService;
 import com.example.attendancesystem.services.WorkedHoursService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,14 +21,16 @@ public class EmployeeController {
   private EmployeeService employeeService;
   private WorkedHoursService workedHoursService;
   private ContactService contactService;
+  private WageService wageService;
 
   @Autowired
   public EmployeeController(EmployeeService employeeService,
       WorkedHoursService workedHoursService,
-      ContactService contactService) {
+      ContactService contactService, WageService wageService) {
     this.employeeService = employeeService;
     this.workedHoursService = workedHoursService;
     this.contactService = contactService;
+    this.wageService = wageService;
   }
 
   @GetMapping("/")
@@ -55,6 +58,7 @@ public class EmployeeController {
         employeeService.getEmployeeById(employee_id)));
     model.addAttribute("shifts", workedHoursService.getAllByEmployee(
         employeeService.getEmployeeById(employee_id)));
+    model.addAttribute("wages", wageService.getAllEmployeesWages(employee_id));
     return "employeedetail";
   }
 

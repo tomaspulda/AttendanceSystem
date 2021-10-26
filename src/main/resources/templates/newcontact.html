@@ -5,6 +5,7 @@
   <title>Create New Contact</title>
 </head>
 <body>
+<h3>Add New Contact</h3>
 <form th:action="@{/contact/new/{id}(id=${eId})}" method="post">
   <label for="street">Street:</label>
   <input type="text" name="street" id="street">

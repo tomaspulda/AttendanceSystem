@@ -2,6 +2,7 @@ package com.example.attendancesystem.services;
 
 import com.example.attendancesystem.models.Employee;
 import com.example.attendancesystem.models.Wage;
+import java.util.List;
 
 public interface WageService {
 
@@ -14,4 +15,6 @@ public interface WageService {
       Employee employee);
 
   Wage getWage(Employee employee, String month);
+
+  List<Wage> getAllEmployeesWages(Long id);
 }
