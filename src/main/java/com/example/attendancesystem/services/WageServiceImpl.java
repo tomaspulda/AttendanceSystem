@@ -65,10 +65,10 @@ public class WageServiceImpl implements WageService {
     if (wage.isSpouse()) {
       incomeTax -= 2070;
     }
-    if (wage.isHandicappedI()) {
+    if (wage.isHandicappedI_II()) {
       incomeTax -= 210;
     }
-    if (wage.isHandicappedII_III()) {
+    if (wage.isHandicappedIII()) {
       incomeTax -= 420;
     }
     if (wage.isPhysicalDisability()) {

@@ -1,7 +1,6 @@
 package com.example.attendancesystem.controllers;
 
 import com.example.attendancesystem.models.Employee;
-import com.example.attendancesystem.models.Wage;
 import com.example.attendancesystem.services.EmployeeService;
 import com.example.attendancesystem.services.WageService;
 import com.example.attendancesystem.services.WorkedHoursService;
@@ -43,13 +42,13 @@ public class WageController {
   public String calculateWage(@PathVariable Long employee_id, @RequestParam String month,
       @RequestParam int bonus, @RequestParam int kids,
       @RequestParam(defaultValue = "false") boolean spouse,
-      @RequestParam(defaultValue = "false") boolean handicappedI,
-      @RequestParam(defaultValue = "false") boolean handicappedII_III,
+      @RequestParam(defaultValue = "false") boolean handicappedI_II,
+      @RequestParam(defaultValue = "false") boolean handicappedIII,
       @RequestParam(defaultValue = "false") boolean physicalDisability,
       @RequestParam(defaultValue = "false") boolean student)
       throws Exception {
     Employee employee = employeeService.getEmployeeById(employee_id);
-    wageService.createWage(bonus, month, kids, spouse, handicappedI, handicappedII_III, physicalDisability, student, employee);
+    wageService.createWage(bonus, month, kids, spouse, handicappedI_II, handicappedIII, physicalDisability, student, employee);
 
     return "redirect:/wage/" + employee_id + "/" + month;
   }

@@ -32,8 +32,8 @@ public class Wage {
   private String month;
   private int kids;
   private boolean spouse;
-  private boolean handicappedI;
-  private boolean handicappedII_III;
+  private boolean handicappedI_II;
+  private boolean handicappedIII;
   private boolean physicalDisability;
   private boolean student;
 
@@ -47,15 +47,15 @@ public class Wage {
     this.bonus = bonus;
   }
 
-  public Wage(int bonus, String month, int kids, boolean spouse, boolean handicappedI,
-      boolean handicappedII_III, boolean physicalDisability, boolean student,
+  public Wage(int bonus, String month, int kids, boolean spouse, boolean handicappedI_II,
+      boolean handicappedIII, boolean physicalDisability, boolean student,
       Employee employee) {
     this.bonus = bonus;
     this.month = month;
     this.kids = kids;
     this.spouse = spouse;
-    this.handicappedI = handicappedI;
-    this.handicappedII_III = handicappedII_III;
+    this.handicappedI_II = handicappedI_II;
+    this.handicappedIII = handicappedIII;
     this.physicalDisability = physicalDisability;
     this.student = student;
     this.employee = employee;
