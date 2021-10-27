@@ -43,6 +43,7 @@ public class WorkedHours {
     this.employee = employee;
     this.month = String.valueOf(date.getMonth() + 1) + "-" + String.valueOf(date.getYear() + 1900);
     this.year = date.getYear() + 1900;
+    this.hoursWorked = 0d;
   }
 
   public void setHoursWorked(Double hoursWorked) {
